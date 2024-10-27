@@ -6,7 +6,7 @@ package model;
 
 /**
  *
- * @author 20232PF.CC0032
+ * @author vanessalagomachado
  */
 public enum TipoMovimentacao {
     ENTRADA, SAIDA;

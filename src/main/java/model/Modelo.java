@@ -1,14 +1,32 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package model;
 
-public class Modelo {
-    private int id;
-    private String descricao;
+import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-    // Construtor, getters e setters
-    public Modelo(int id, String descricao) {
-        this.id = id;
-        this.descricao = descricao;
-    }
+/**
+ *
+ * @author vanessalagomachado
+ */
+@Entity
+@Table(name = "tb_modelo")
+public class Modelo implements Serializable {
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Id
+    private int id;
+    
+    @Column(name = "descr", length = 100, nullable = false)
+    private String descricao;
+    
+    private Marca marca;
 
     public int getId() {
         return id;
@@ -25,4 +43,14 @@ public class Modelo {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
+
+    public Marca getMarca() {
+        return marca;
+    }
+
+    public void setMarca(Marca marca) {
+        this.marca = marca;
+    }
+    
+    
 }

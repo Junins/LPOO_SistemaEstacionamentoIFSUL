@@ -1,18 +1,48 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package model;
 
 import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
+/**
+ *
+ * @author vanessalagomachado
+ */
+@Entity
+@Table(name = "tb_entradasaida")
 public class EntradaSaida {
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Id
     private int id;
+    
     private Date data;
-    private TipoEntradaSaida tipo;
+    
+    @Enumerated(EnumType.STRING)
+    
+    @ManyToOne
+    @JoinColumn(name = "veiculo_id")
+    private TipoMovimentacao tipoMovimentacao;
+    
+    private final Veiculo veiculo;
 
-    // Construtor, getters e setters
-    public EntradaSaida(int id, Date data, TipoEntradaSaida tipo) {
-        this.id = id;
-        this.data = data;
-        this.tipo = tipo;
+    public EntradaSaida(TipoMovimentacao tipo, Veiculo veiculo) {
+        tipoMovimentacao = tipo;
+        this.veiculo = veiculo;
+        data = new Date();
     }
+    
+    
 
     public int getId() {
         return id;
@@ -30,11 +60,17 @@ public class EntradaSaida {
         this.data = data;
     }
 
-    public TipoEntradaSaida getTipo() {
-        return tipo;
+    public TipoMovimentacao getTipoMovimentacao() {
+        return tipoMovimentacao;
     }
 
-    public void setTipo(TipoEntradaSaida tipo) {
-        this.tipo = tipo;
+    public void setTipoMovimentacao(TipoMovimentacao tipoMovimentacao) {
+        this.tipoMovimentacao = tipoMovimentacao;
     }
+
+    public Veiculo getVeiculo() {
+        return veiculo;
+    }
+
+    
 }

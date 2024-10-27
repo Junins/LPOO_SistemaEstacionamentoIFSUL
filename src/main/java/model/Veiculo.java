@@ -1,21 +1,72 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package model;
 
-public class Veiculo {
-    private String placa;
-    private String cor;
-    private int id;
-    private Modelo modelo;
-    private Marca marca;
-    private TipoVeiculo tipo;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import org.hibernate.annotations.ManyToAny;
 
-    // Construtor, getters e setters
-    public Veiculo(String placa, String cor, int id, Modelo modelo, Marca marca, TipoVeiculo tipo) {
+/**
+ *
+ * @author vanessalagomachado
+ */
+@Entity
+@Table(name = "tb_veiculo")
+public class Veiculo implements Serializable {
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Id
+    private int id;
+    
+    @Column(nullable = false, length = 7)
+    private String placa;
+    
+    @Column(length = 20)
+    private String cor;
+    
+    @Enumerated(EnumType.STRING)
+    private TipoVeiculo tipoVeiculo;
+    
+    
+    @ManyToOne
+    @JoinColumn(name = "modelo_id")
+    private Modelo modelo;
+//    private List<EntradaSaida> listaMovimentacoes;
+//    private Pessoa proprietario;
+    
+    
+
+    public Veiculo() {
+//        listaMovimentacoes = new ArrayList<>();
+    }
+
+    public Veiculo(String placa, TipoVeiculo tipoVeiculo) {
         this.placa = placa;
-        this.cor = cor;
+        this.tipoVeiculo = tipoVeiculo;
+//        listaMovimentacoes = new ArrayList<>();
+    }
+    
+    
+    
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
         this.id = id;
-        this.modelo = modelo;
-        this.marca = marca;
-        this.tipo = tipo;
     }
 
     public String getPlaca() {
@@ -34,14 +85,18 @@ public class Veiculo {
         this.cor = cor;
     }
 
-    public int getId() {
-        return id;
+    public TipoVeiculo getTipoVeiculo() {
+        return tipoVeiculo;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setTipoVeiculo(TipoVeiculo tipoVeiculo) {
+        this.tipoVeiculo = tipoVeiculo;
     }
-
+    
+//    public void addMovimentacao(EntradaSaida movimentacao){
+//        listaMovimentacoes.add(movimentacao);
+//    }
+//
     public Modelo getModelo() {
         return modelo;
     }
@@ -50,19 +105,18 @@ public class Veiculo {
         this.modelo = modelo;
     }
 
-    public Marca getMarca() {
-        return marca;
-    }
-
-    public void setMarca(Marca marca) {
-        this.marca = marca;
-    }
-
-    public TipoVeiculo getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(TipoVeiculo tipo) {
-        this.tipo = tipo;
-    }
+//    public Pessoa getProprietario() {
+//        return proprietario;
+//    }
+//
+//    public void setProprietario(Pessoa proprietario) {
+//        this.proprietario = proprietario;
+//    }
+//
+//    public List<EntradaSaida> getListaMovimentacoes() {
+//        return listaMovimentacoes;
+//    }
+//    
+    
+    
 }
