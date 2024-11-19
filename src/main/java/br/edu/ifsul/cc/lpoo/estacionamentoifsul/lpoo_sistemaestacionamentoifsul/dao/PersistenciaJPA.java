@@ -4,9 +4,15 @@
  */
 package br.edu.ifsul.cc.lpoo.estacionamentoifsul.lpoo_sistemaestacionamentoifsul.dao;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
+import javax.persistence.TypedQuery;
+import model.Pessoa;
+import model.VinculoPessoa;
 
 /**
  *
@@ -57,7 +63,16 @@ public class PersistenciaJPA implements InterfaceBD {
 
     @Override
     public void remover(Object o) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        entity = getEntityManager();
+        try {
+            entity.getTransaction().begin();
+            entity.remove(o);
+            entity.getTransaction().commit();
+        } catch (Exception e) {
+            if (entity.getTransaction().isActive()) {
+                entity.getTransaction().rollback();
+            }
+        }
     }
 
     /*
@@ -72,4 +87,20 @@ public class PersistenciaJPA implements InterfaceBD {
         return entity;
     }
 
+    // funções para listar dados 
+    public List<Pessoa> getPessoas() {
+        entity = getEntityManager();
+
+        try {
+            TypedQuery<Pessoa> query
+                    = entity.createQuery("Select p from Pessoa p", Pessoa.class);
+            return query.getResultList();
+        } catch (Exception e) {
+            System.err.println("Erro ao buscar Pessoas: " + e);
+            return null;
+        }
+
+    }
+
+    
 }

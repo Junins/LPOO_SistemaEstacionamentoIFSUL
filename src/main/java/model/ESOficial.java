@@ -4,22 +4,24 @@
  */
 package model;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.OneToOne;
 
 /**
  *
  * @author vanessalagomachado
  */
 @Entity
-@Table(name = "tb_esoficial")
+@DiscriminatorValue("veiculo_oficial")
 public class ESOficial extends EntradaSaida{
+    
+    
     private int kmRegistrado;
     
-    @ManyToOne
-    @JoinColumn(name = "motorista_id")
+    @OneToOne
+    @JoinColumn(name = "es_oficial_motorista")
     private Pessoa motorista;
 
     public ESOficial(TipoMovimentacao tipo, Veiculo veiculo, Pessoa motorista) {

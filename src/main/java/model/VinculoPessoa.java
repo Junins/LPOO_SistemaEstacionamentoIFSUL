@@ -4,10 +4,7 @@
  */
 package model;
 
-/**
- *
- * @author vanessalagomachado
- */
 public enum VinculoPessoa {
     SERVIDOR, ALUNO, TERCEIRIZADO, VISITANTE;
+    
 }
