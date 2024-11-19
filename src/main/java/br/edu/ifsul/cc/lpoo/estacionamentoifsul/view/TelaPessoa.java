@@ -292,7 +292,9 @@ public void carregarPessoasCadastradas() {
     String vinculoFiltroStr = (String) cmbVinculoPessoa.getSelectedItem();
 
     VinculoPessoa vinculoFiltro = null;
-    if (vinculoFiltroStr != null) {
+
+    // Verifica se o vínculo selecionado é "TODOS"
+    if (vinculoFiltroStr != null && !vinculoFiltroStr.equals("TODOS")) {
         try {
             vinculoFiltro = VinculoPessoa.valueOf(vinculoFiltroStr);
         } catch (IllegalArgumentException e) {
@@ -305,6 +307,7 @@ public void carregarPessoasCadastradas() {
     for (Pessoa pessoa : jpa.getPessoas()) {
         boolean nomeCorreto = pessoa.getNome().toLowerCase().contains(nomeFiltro);
 
+        // Se vinculoFiltro for nulo, significa que "TODOS" foi selecionado, então ignora o filtro de vínculo
         boolean vinculoCorreto = vinculoFiltro == null || pessoa.getVinculoPessoa() == vinculoFiltro;
 
         if (nomeCorreto && vinculoCorreto) {
@@ -317,12 +320,17 @@ public void carregarPessoasCadastradas() {
     jpa.fecharConexao();
 }
     
-    private void inicializarComboBox() {
+private void inicializarComboBox() {
     String[] vinculos = Arrays.stream(VinculoPessoa.values())
                                .map(Enum::name)
                                .toArray(String[]::new);
 
-    cmbVinculoPessoa.setModel(new javax.swing.DefaultComboBoxModel<>(vinculos));
+    // Adiciona o item "TODOS" no início da lista
+    String[] vinculosComTodos = new String[vinculos.length + 1];
+    vinculosComTodos[0] = "TODOS";  // O primeiro item será "TODOS"
+    System.arraycopy(vinculos, 0, vinculosComTodos, 1, vinculos.length);
+
+    cmbVinculoPessoa.setModel(new javax.swing.DefaultComboBoxModel<>(vinculosComTodos));
 }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

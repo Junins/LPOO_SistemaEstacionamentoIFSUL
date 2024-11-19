@@ -143,12 +143,7 @@
     <Component class="javax.swing.JComboBox" name="cmbVinculoPessoa">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="VISITANTE"/>
-            <StringItem index="1" value="ALUNO"/>
-            <StringItem index="2" value="SERVIDOR"/>
-            <StringItem index="3" value="TERCEIRIZADO"/>
-          </StringArray>
+          <StringArray count="0"/>
         </Property>
       </Properties>
       <Events>

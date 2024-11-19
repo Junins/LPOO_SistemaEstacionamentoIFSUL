@@ -23,6 +23,7 @@ public class TelaCadastroPessoa extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         jpa = new PersistenciaJPA();
+        inicializarComboBox();
     }
 
     TelaCadastroPessoa(TelaPessoa aThis, boolean rootPaneCheckingEnabled, Pessoa selectedPessoa) {
