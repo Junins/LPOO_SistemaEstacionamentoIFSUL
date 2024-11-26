@@ -60,7 +60,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Helvetica Neue" size="14" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Pessoas Cadastradas"/>
+        <Property name="text" type="java.lang.String" value="Veiculos Cadastrados"/>
       </Properties>
     </Component>
     <Container class="javax.swing.JPanel" name="areaFiltros">
@@ -69,14 +69,14 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
-                  <Component id="lblBuscaNome" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblBuscaPlaca" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="txtBuscaNome" min="-2" pref="210" max="-2" attributes="0"/>
+                  <Component id="txtBuscaPlaca" min="-2" pref="210" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="lblBuscaVinculo" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblBuscaOficial" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="cmbVinculoPessoa" min="-2" pref="103" max="-2" attributes="0"/>
-                  <EmptySpace pref="15" max="32767" attributes="0"/>
+                  <Component id="cmbVinculoOficial" min="-2" pref="103" max="-2" attributes="0"/>
+                  <EmptySpace pref="29" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -85,10 +85,10 @@
               <Group type="102" attributes="0">
                   <EmptySpace pref="37" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lblBuscaNome" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="cmbVinculoPessoa" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtBuscaNome" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblBuscaVinculo" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblBuscaPlaca" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="cmbVinculoOficial" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtBuscaPlaca" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblBuscaOficial" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -96,33 +96,33 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="lblBuscaNome">
+        <Component class="javax.swing.JLabel" name="lblBuscaPlaca">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Nome: "/>
+            <Property name="text" type="java.lang.String" value="Placa:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="cmbVinculoPessoa">
+        <Component class="javax.swing.JComboBox" name="cmbVinculoOficial">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="0"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="cmbVinculoPessoaItemStateChanged"/>
+            <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="cmbVinculoOficialItemStateChanged"/>
           </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;VinculoPessoa&gt;"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JLabel" name="lblBuscaVinculo">
+        <Component class="javax.swing.JLabel" name="lblBuscaOficial">
           <Properties>
-            <Property name="text" type="java.lang.String" value="V&#xed;nculo:"/>
+            <Property name="text" type="java.lang.String" value="Oficial:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtBuscaNome">
+        <Component class="javax.swing.JTextField" name="txtBuscaPlaca">
           <Events>
-            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtBuscaNomeKeyPressed"/>
-            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtBuscaNomeKeyReleased"/>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtBuscaPlacaKeyPressed"/>
+            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtBuscaPlacaKeyReleased"/>
           </Events>
         </Component>
       </SubComponents>
@@ -157,14 +157,14 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JList" name="lstPessoas">
+            <Component class="javax.swing.JList" name="lstVeiculos">
               <Properties>
                 <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
                   <StringArray count="0"/>
                 </Property>
               </Properties>
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Pessoa&gt;"/>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Veiculo&gt;"/>
               </AuxValues>
             </Component>
           </SubComponents>

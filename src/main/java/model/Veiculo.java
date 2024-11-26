@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package model;
 
 import java.io.Serializable;
@@ -24,42 +20,35 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import org.hibernate.annotations.ManyToAny;
 
-/**
- *
- * @author vanessalagomachado
- */
 @Entity
 @Table(name = "tb_veiculo")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "tipo_veiculo", discriminatorType = DiscriminatorType.STRING)
 public class Veiculo implements Serializable {
+
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Id
     private int id;
-    
+
     @Column(nullable = false, length = 7)
     private String placa;
-    
+
     @Column(length = 20)
     private String cor;
-    
+
     @Enumerated(EnumType.STRING)
     private TipoVeiculo tipoVeiculo;
-    
-    
+
     @ManyToOne
     @JoinColumn(name = "modelo_id")
     private Modelo modelo;
-    
-    
+
     @OneToMany(mappedBy = "veiculo")
     private List<EntradaSaida> listaMovimentacoes;
 
     @ManyToOne
     @JoinColumn(name = "veiculo_proprietario")
     private Pessoa proprietario;
-    
-    
 
     public Veiculo() {
         listaMovimentacoes = new ArrayList<>();
@@ -70,9 +59,6 @@ public class Veiculo implements Serializable {
         this.tipoVeiculo = tipoVeiculo;
         listaMovimentacoes = new ArrayList<>();
     }
-    
-    
-    
 
     public int getId() {
         return id;
@@ -105,11 +91,12 @@ public class Veiculo implements Serializable {
     public void setTipoVeiculo(TipoVeiculo tipoVeiculo) {
         this.tipoVeiculo = tipoVeiculo;
     }
-    
-    public void addMovimentacao(EntradaSaida movimentacao){
+
+    public void addMovimentacao(EntradaSaida movimentacao) {
         listaMovimentacoes.add(movimentacao);
     }
 //
+
     public Modelo getModelo() {
         return modelo;
     }
@@ -122,14 +109,20 @@ public class Veiculo implements Serializable {
         return proprietario;
     }
 //
+
     public void setProprietario(Pessoa proprietario) {
         this.proprietario = proprietario;
     }
 //
+
     public List<EntradaSaida> getListaMovimentacoes() {
         return listaMovimentacoes;
     }
-//    
-    
-    
+//   
+
+    @Override
+    public String toString() {
+        return (modelo != null ? modelo : "Modelo desconhecido") + " (" + placa + ")";
+    }
+
 }

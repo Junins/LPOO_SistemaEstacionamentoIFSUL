@@ -1,12 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -21,29 +18,32 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "tb_pessoa")
 public class Pessoa implements Serializable {
-
+    
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int id;
-
+    
     @Column(nullable = false, length = 50)
     private String nome;
-
+    
     @Column(length = 20)
     private String fone;
-
+    
     @Column(length = 50)
     private String email;
-
+    
     @Enumerated(EnumType.STRING)
     private VinculoPessoa vinculoPessoa;
-
+    
+    
     @OneToMany(mappedBy = "proprietario", cascade = CascadeType.ALL)
     private List<Veiculo> listaVeiculos;
 
     public Pessoa() {
         listaVeiculos = new ArrayList<>();
     }
+    
+    
 
     public int getId() {
         return id;
@@ -84,8 +84,8 @@ public class Pessoa implements Serializable {
     public void setVinculoPessoa(VinculoPessoa vinculoPessoa) {
         this.vinculoPessoa = vinculoPessoa;
     }
-
-    public void addVeiculo(Veiculo vei) {
+    
+    public void addVeiculo(Veiculo vei){
         listaVeiculos.add(vei);
     }
 
@@ -95,7 +95,10 @@ public class Pessoa implements Serializable {
 
     @Override
     public String toString() {
-        return nome + " - " + vinculoPessoa;
+        return nome+" ("+vinculoPessoa+")";
     }
 
+    
+    
+    
 }

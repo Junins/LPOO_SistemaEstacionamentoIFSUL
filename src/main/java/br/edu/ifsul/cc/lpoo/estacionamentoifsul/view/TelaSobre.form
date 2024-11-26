@@ -72,12 +72,12 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
-        <Property name="text" type="java.lang.String" value="&lt;html&gt;&#xa;&lt;p&gt;&#xa;Sistema de Controle de Estacionamento implementado na disciplina de LPOO como aprendizado de Programa&#xe7;&#xe3;o Visual usando persist&#xea;ncia em Banco de Dados e linguagem de programa&#xe7;&#xe3;o Java.&#xa;&lt;/p&gt;&#xa;&lt;/html&gt;"/>
+        <Property name="text" type="java.lang.String" value="&lt;html&gt; &lt;p&gt; Estacionamento java &lt;/p&gt; &lt;/html&gt;"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Prof&#xaa; Vanessa Lago Machado"/>
+        <Property name="text" type="java.lang.String" value="Luiggi Mathew Scortegagna"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnFechar">
